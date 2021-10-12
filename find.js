@@ -9,7 +9,7 @@
 module.exports = function (RED) {
     const mongoClient = require('mongodb');
 
-    function findProj(config) {
+    function find(config) {
         RED.nodes.createNode(this, config);
         var node = this;
 
@@ -88,5 +88,5 @@ module.exports = function (RED) {
         });
     }
 
-    RED.nodes.registerType("findProj", findProj);
+    RED.nodes.registerType("find", find);
 }
