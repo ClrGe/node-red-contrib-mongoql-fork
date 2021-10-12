@@ -1,0 +1,41 @@
+<script type="text/html" data-template-name="dropDb">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-tips">
+        To use this node, you need to provide <code>msg.url</code> (string) and <code>msg.db_name</code> (string) on your function node or inject node.
+    </div>
+</script>
+
+<script type="text/html" data-help-name="dropDb">
+    <p>
+        <strong>About</strong><br/>
+        This node implement dropDatabase function from MongoDB Driver.<br/><br/>
+        To use this node, you need to provide <code>msg.url</code> (string) and <code>msg.db_name</code> (string).<br/><br/>
+        <strong>Example (Function Node)</strong><br/>
+        msg.url = "mongodb://localhost:27017";<br/>
+        msg.db_name = "pos";<br/>
+        return msg;
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('dropDb', {
+        category: 'MongoQL',
+        color: '#68B368',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "mongodb.png",
+        paletteLabel: 'dropDb',
+        align: 'left',
+        label: function () {
+            return this.name || "dropDb";
+        }
+    });
+</script>

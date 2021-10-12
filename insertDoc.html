@@ -1,0 +1,51 @@
+<script type="text/html" data-template-name="insertDoc">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-tips">
+        To use this node, you need to provide <code>msg.url</code> (string), <code>msg.db_name</code> (string), <code>msg.db_collection</code> (string) and <code>msg.payload</code> (json) on your function node or inject node.
+    </div>
+</script>
+
+<script type="text/html" data-help-name="insert">
+    <p>
+        <strong>About</strong><br/>
+        This node implement insert function from MongoDB Driver.<br/><br/>
+        To use this node, you need to provide <code>msg.url</code> (string), <code>msg.db_name</code> (string), <code>msg.db_collection</code> (string) and <code>msg.payload</code> (json) on your function node or inject node.<br/><br/>
+        <strong>Example (Function Node)</strong><br/>
+        msg.url = "mongodb://localhost:27017";<br/>
+        msg.db_name = "pos";<br/>
+        msg.db_collection = "product";<br/>
+        msg.payload = [{<br/>
+        &emsp;"name": "Carrot",<br/>
+        &emsp;"type": "Vegetables",<br/>
+        &emsp;"price": 2.47<br/>
+        },{<br/>
+        &emsp;"name": "Grape",<br/>
+        &emsp;"type": "Fruit",<br/>
+        &emsp;"price": 24.7<br/>
+        }];<br/>
+        return msg;
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('insertDoc', {
+        category: 'MongoQL',
+        color: '#68B368',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "mongodb.png",
+        paletteLabel: 'insertDoc',
+        align: 'left',
+        label: function () {
+            return this.name || "insertDoc";
+        }
+    });
+</script>

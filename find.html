@@ -1,0 +1,50 @@
+<script type="text/html" data-template-name="find">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-tips">
+        To use this node, you need to provide <code>msg.url</code> (string), <code>msg.db_name</code> (string) and <code>msg.db_collection</code> (string) on your function node or inject node.<br/><br/>
+        The other parameters you can use are <code>msg.limit</code> (Number), <code>msg.skip</code> (Number), <code>msg.sort</code> (json) and <code>msg.query</code> (json).
+    </div>
+</script>
+
+<script type="text/html" data-help-name="find">
+    <p>
+        <strong>About</strong><br/>
+        This node implement find function from MongoDB Driver.<br/><br/>
+        To use this node, you need to provide <code>msg.url</code> (string), <code>msg.db_name</code> (string) and <code>msg.db_collection</code> (string).<br/>
+        The other parameters you can use are <code>msg.limit</code> (Number), <code>msg.skip</code> (Number), <code>msg.sort</code> (json), <code>msg.query</code> (json),<br/>
+        and <code>msg.fields</code> (json).<br/>
+        You can check <a href="https://docs.mongodb.com/manual/reference/method/db.collection.find/">MongoDB Find</a> to filter data and <a href="https://docs.mongodb.com/manual/reference/method/cursor.sort/#mongodb-method-cursor.sort">Sort Cursor</a> to sort data.<br/><br/>
+        <strong>Example (Function Node)</strong><br/>
+        msg.url = "mongodb://localhost:27017";<br/>
+        msg.db_name = "pos";<br/>
+        msg.db_collection = "product";<br/>
+        msg.limit = 247;<br/>
+        msg.query = {"category": "vegetables"};<br/>
+        msg.fields = {"_id": 0};<br/>
+        msg.sort = {"name": -1};<br/>
+        return msg;
+    </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('find', {
+        category: 'MongoQL',
+        color: '#68B368',
+        defaults: {
+            name: {
+                value: ""
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "mongodb.png",
+        paletteLabel: 'find',
+        align: 'left',
+        label: function () {
+            return this.name || "find";
+        }
+    });
+</script>
