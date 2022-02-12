@@ -21,7 +21,7 @@ module.exports = function (RED) {
             var sort = msg.sort || {};
             var limit = msg.limit;
             var skip = msg.skip;
-            var fields = msg.fields; // JMG
+            var fields = msg.fields; // ClG add for projection
 
             if (typeof limit === 'string' && !isNaN(limit)) {
                 limit = Number(limit);
@@ -43,7 +43,7 @@ module.exports = function (RED) {
                 delete msg.sort;
                 delete msg.limit;
                 delete msg.skip;
-                delete msg.fields; // JMG
+                delete msg.fields;// ClG add for projection
 
                 msg.status = "error";
                 msg.payload = "Please provide msg.url, msg.db_name and msg.db_collection";
@@ -57,7 +57,7 @@ module.exports = function (RED) {
                 delete msg.sort;
                 delete msg.limit;
                 delete msg.skip;
-                delete msg.fields; // JMG
+                delete msg.fields; // ClG add for projection
 
                 mongoClient.connect(url, { useNewUrlParser: true }).then((client) => {
                     var db = client.db(db_name).collection(db_collection);
